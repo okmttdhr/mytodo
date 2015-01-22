@@ -21,7 +21,8 @@ describe('Controller: MainCtrl', function () {
     // callFake(function(key){
     //   return store[key];
     // });
-    spyOn(localStorageService,'add').and.callThrough();
+    // spyOn(localStorageService,'set').and.callThrough();
+    // spyOn(localStorageService,'add').and.callThrough();
     // callFake(function(key, val){
     //   store[key] = val;
     // });
@@ -34,6 +35,7 @@ describe('Controller: MainCtrl', function () {
   }));
 
   it('should attach a list of todos to the scope', function () {
+    expect(localStorageService.get).toHaveBeenCalledWith('todos');
     expect(scope.todos.length).toBe(0);
   });
 
@@ -42,12 +44,16 @@ describe('Controller: MainCtrl', function () {
       title: 'Test 1'
     };
     scope.addTodo();
-    expect(scope.todos.length).toBe(1);
 
-    expect(localStorageService.get).toHaveBeenCalledWith('todos');
+    // scope.$digest();
+    // expect(localStorageService.set).toHaveBeenCalledWith('todos', jasmine.any(String));
+    // expect(scope.todos.length).toBe(1);
+    // expect(localStorageService.add).toHaveBeenCalledWith('todos', jasmine.any(String));
+    // expect(localStorageService.get).toHaveBeenCalledWith('todos');
     // expect(localStorageService.get).toHaveBeenCalled('todos');
     // expect(localStorageService.add).toHaveBeenCalledWith('todos', jasmine.any(String));
-    expect(localStorageService.get('todos')).toEqual(scope.todos);
+    // expect(localStorageService.get).toHaveBeenCalledWith('todos').toEqual(scope.todos);
+    // expect(localStorageService.get('todos')).toEqual(scope.todos);
 
   });
 
