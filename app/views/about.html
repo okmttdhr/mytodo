@@ -1,1 +1,42 @@
-<p>This is the about view.</p>
+<div ng-controller="AboutCtrl">
+  <h2>Parent Scope</h2>
+  <input ng-model="foo"> <i>// Update to see how parent scope interacts with component scope</i>
+
+  <hr>
+
+  <my-component attribute-foo="{{foo}}" binding-foo="foo" isolated-expression-foo="updateFoo(newFoo)" >
+    <h2>Attribute</h2>
+    <div>
+      <strong>get:</strong> {{isolatedAttributeFoo}}
+    </div>
+    <div>
+      <strong>set:</strong> <input ng-model="isolatedAttributeFoo">
+      <i>// This does not update the parent scope.</i>
+    </div>
+    <h2>Binding</h2>
+    <div>
+      <strong>get:</strong> {{isolatedBindingFoo}}
+    </div>
+    <div>
+      <strong>set:</strong> <input ng-model="isolatedBindingFoo">
+      <i>// This does update the parent scope.</i>
+    </div>
+    <h2>Expression</h2>
+    <div>
+      <input ng-model="isolatedFoo">
+      <button class="btn" ng-click="isolatedExpressionFoo({newFoo:isolatedFoo})">Submit</button>
+      <i>// And this calls a function on the parent scope.</i>
+    </div>
+  </my-component>
+
+  <hr>
+
+  <div phone dial="callHome(message)"></div>
+
+  <hr>
+
+  <p>親スコープ</p>
+  <div><input type="text" ng-model="note"><i>// Update to see how parent scope interacts with component scope</i></div>
+  <div sample-directive name="tadahiro" attribute-note="{{note}}" binding-note="note" alert-message="showMessage(note)"></div>
+
+</div>

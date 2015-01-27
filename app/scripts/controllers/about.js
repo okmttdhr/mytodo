@@ -7,11 +7,28 @@
  * # AboutCtrl
  * Controller of the mytodoApp
  */
-angular.module('mytodoApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+
+
+var mytodoAppAboutCtrl = angular.module('mytodoAppAboutCtrl', []);
+
+mytodoAppAboutCtrl.controller('AboutCtrl', ['$scope',
+  function ($scope) {
+    console.log('AboutCtrl: in')
+
+    $scope.foo = 'Hello!';
+    $scope.note = 'Hello!';
+
+    $scope.updateFoo = function (newFoo) {
+      console.log('newFoo: '+newFoo);
+      $scope.foo = newFoo;
+    }
+
+    $scope.callHome = function(message) {
+      alert(message);
+    }
+
+    $scope.showMessage = function(note) {
+      alert(note);
+    }
+  }
+]);
