@@ -1,2 +1,1 @@
 # mytodo
-yeoman tutorial
